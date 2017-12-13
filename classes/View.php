@@ -1,0 +1,22 @@
+<?php
+
+class View
+{
+//    const PATH = __DIR__ . '/../views/';
+
+    protected $data = array();
+
+    public function assign($name, $value)
+    {
+        $this->data[$name] = $value;
+    }
+
+    public function display($template)
+    {
+        foreach ($this->data as $key => $val) {
+            $$key = $val;
+        }
+//        include PATH . $template;
+        include __DIR__ . '/../views/' . $template;
+    }
+}

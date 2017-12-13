@@ -8,8 +8,11 @@ class NewsController
 {
     public function actionAll() //получить все новости из базы и вывести
     {
-        $items = News::getAll();
-        include __DIR__ . '/../views/news/all.php';
+        $news = News::getAll();
+        $view = new View();
+        $view->assign('items', $news);
+        $view->display('news/all.php');
+//        include __DIR__ . '/../views/news/all.php';
     }
 
     public function actionOne() //получить одну новости из базы по ид и вывести
