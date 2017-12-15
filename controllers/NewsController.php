@@ -10,7 +10,9 @@ class NewsController
     {
         $news = News::getAll();
         $view = new View();
-        $view->assign('items', $news);
+//        $view->assign('items', $news); // уже не нужен, используется сеттер
+        $view->items = $news;
+
         $view->display('news/all.php');
 //        include __DIR__ . '/../views/news/all.php';
     }
@@ -18,7 +20,11 @@ class NewsController
     public function actionOne() //получить одну новости из базы по ид и вывести
     {
         $id = $_GET['id'];
-        $items = News::getOne($id);
-        include __DIR__ . '/../views/news/one.php';
+        $item = News::getOne($id);
+        $view = new View();
+//        $view->assign('item', $item); // уже не нужен, используется сеттер
+        $view->item = $item;
+        $view->display('news/one.php');
+//        include __DIR__ . '/../views/news/one.php';
     }
 }

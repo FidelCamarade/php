@@ -1,2 +1,2 @@
-    <h1><?=$items->title?></h1>
-    <div><?=$items->text?></div>
+    <h1><?=$item->title?></h1>
+    <div><?=$item->text?></div>
