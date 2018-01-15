@@ -22,12 +22,21 @@ class View
         $this->data[$name] = $value; //назначает нужной нам переменной входящий массив (массив объектов новостей, например)
     }
 
-    public function display($template)
+    public function render($template)
     {
         foreach ($this->data as $key => $val) {
             $$key = $val;  //переменная, имя которой содержится в переменной
         }
+        ob_start();
 //        include PATH . $template;
         include __DIR__ . '/../views/' . $template;
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
+    }
+
+    public function display($template)
+    {
+        echo $this->render($template);
     }
 }
